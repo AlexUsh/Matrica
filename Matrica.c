@@ -3,8 +3,9 @@
 #include <time.h>
 #include <string.h> 
 
-int main(int argc, char *argv[]) {
-	
+int main(int argc, char *argv[])
+{
+	/*Randomly generate an array of m*n, fill it, print the screen.*/
 	int i,j,k,m,n;
 	srand (time (NULL));
 
@@ -24,8 +25,8 @@ int main(int argc, char *argv[]) {
     }
     printf("\n");
     
-    
-    /*разворачиваем строки*/
+/*Swap the first and last lines, deploy them*/    
+    /*expandable rows*/
     for(j=0; j<n/2; j++)
     {
     	k = mass[0][j];
@@ -36,7 +37,7 @@ int main(int argc, char *argv[]) {
     	mass[m-1][j] = mass[m-1][n-1-j];
     	mass[m-1][n-1-j] = k;
     }
-    /*меняем местами первую и последнюю*/
+    /*swap first and last*/
     for (j=0; j<n; j++)
     {
        	k = mass[0][j];
@@ -45,7 +46,7 @@ int main(int argc, char *argv[]) {
     }
     
     printf("2:\n");
-    /*вводим*/
+   
     for (i=0; i<m; i++)
     {
         for(j=0; j<n; j++)
@@ -55,8 +56,8 @@ int main(int argc, char *argv[]) {
         printf ("\n");
     }
     printf("\n");
-
-	/*ищем минимальный*/
+/*Delete the row and column intersection is the smallest element of the array.*/
+	/*looking for minimum*/
 	int mini = 0;
 	int minj = 0;
 	int min = mass[0][0];
@@ -73,7 +74,7 @@ int main(int argc, char *argv[]) {
         }
     }
 
-    /*удаляем строку*/
+    /*delete the line*/
     for (i=mini; i<m; i++)
     {
         for(j=0; j<n; j++)
@@ -81,7 +82,7 @@ int main(int argc, char *argv[]) {
              mass[i][j]=mass[i+1][j];
         }
     }
-    /*удаляем столбец*/
+    /*the column to delete*/
     for (j=minj; j<n; j++)
     {
         for(i=0; i<m; i++)
@@ -91,7 +92,7 @@ int main(int argc, char *argv[]) {
     }
     
     printf("3:\n");
-    /*вывыодим*/
+    /*print*/
     for (i=0; i<m-1; i++)
     {
         for(j=0; j<n-1; j++)
@@ -101,13 +102,15 @@ int main(int argc, char *argv[]) {
         printf ("\n");
     }
     printf ("\n");
+/*Create a second massive manually 
+Formatting: space bar-member end point-the end of the line, point the end of the input*/	
     char str[1024];
 
 	printf("Enter string to fill a matrix. Size should be (x*%d): ", n-1);
 
 	gets(str);
 		
-	/*определяем размер массива*/
+	/*determine the size of the array*/
 	int m1 = 1;
 	int n1 = 1;
 	for(i=0; i<strlen(str); i++)
@@ -147,7 +150,7 @@ int main(int argc, char *argv[]) {
 	}	
 	printf("\n");
 
- 	/*вывыодим mass*/
+ 	/*print mass*/
  	printf("A:\n");
     for (i=0; i<m-1; i++)
     {
@@ -159,7 +162,7 @@ int main(int argc, char *argv[]) {
     }
 	printf ("\n");
 	printf("B:\n");
-    /*вывыодим mass2*/
+    /*print mass2*/
     for (i=0; i<m1; i++)
     {
         for(j=0; j<n1; j++)
@@ -170,12 +173,12 @@ int main(int argc, char *argv[]) {
     }
 	printf ("\n");
 	
-	/*перемножаем*/
+	/*the multiplied matrix*/
 	int mass3[m-1][n1];
-	/*если форма матриц согласована*/
+	/*if the form of the matrices agreed*/
 	if(n-1==m1)
 	{
-		/*считаем*/
+		/*consider*/
 		for(i = 0; i < m-1; i++)
 		{
     		for(j = 0; j < n1; j++)
@@ -188,7 +191,7 @@ int main(int argc, char *argv[]) {
     		}
     	}
     	printf("A*B:\n");
-    	/*выводим результат*/
+    	/*output the result*/
     	for(i = 0; i < m-1; i++)
 		{
     		for(j = 0; j < n1; j++)
